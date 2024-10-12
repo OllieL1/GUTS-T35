@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=3 uid="uid://cyf6oex5nm7a8"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
 [ext_resource type="PackedScene" uid="uid://xxdo6blqgn2u" path="res://background.tscn" id="1_pab6f"]
 [ext_resource type="PackedScene" uid="uid://wl00d2pph8r4" path="res://obstacle.tscn" id="2_mr6sg"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://cc3ne42fyol7d"]
+
+[ext_resource type="PackedScene" uid="uid://pplf3j4ynokc" path="res://player.tscn" id="1_0s2yp"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
+[ext_resource type="PackedScene" uid="uid://dls6k7r5dkxcp" path="res://background.tscn" id="1_pab6f"]
+[ext_resource type="PackedScene" uid="uid://byd7v6ypku8m4" path="res://obstacle.tscn" id="2_mr6sg"]
+>>>>>>> cf1aa7e753b1f19f2b89b47cfb997da669b2f7cc
 [ext_resource type="PackedScene" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" path="res://music.tscn" id="5_j4qqt"]
 
@@ -11,8 +20,6 @@
 script = ExtResource("1_mhqcc")
 
 [node name="Background" parent="." instance=ExtResource("1_pab6f")]
-position = Vector2(493, 302)
-scale = Vector2(0.5, 0.5)
 
 [node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
 

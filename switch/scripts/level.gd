@@ -22,3 +22,7 @@ func _process(delta: float) -> void:
 func _on_play_button_pressed() -> void:
 	run = true
 	$"Play Button".visible = false
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

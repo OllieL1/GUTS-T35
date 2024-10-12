@@ -1,20 +1,39 @@
-<<<<<<< HEAD
-[gd_scene load_steps=7 format=3 uid="uid://cyf6oex5nm7a8"]
+[gd_scene load_steps=15 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
-[ext_resource type="PackedScene" uid="uid://xxdo6blqgn2u" path="res://background.tscn" id="1_pab6f"]
-[ext_resource type="PackedScene" uid="uid://wl00d2pph8r4" path="res://obstacle.tscn" id="2_mr6sg"]
-=======
-[gd_scene load_steps=7 format=3 uid="uid://cc3ne42fyol7d"]
-
-[ext_resource type="PackedScene" uid="uid://pplf3j4ynokc" path="res://player.tscn" id="1_0s2yp"]
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
 [ext_resource type="PackedScene" uid="uid://dls6k7r5dkxcp" path="res://background.tscn" id="1_pab6f"]
-[ext_resource type="PackedScene" uid="uid://byd7v6ypku8m4" path="res://obstacle.tscn" id="2_mr6sg"]
->>>>>>> cf1aa7e753b1f19f2b89b47cfb997da669b2f7cc
-[ext_resource type="PackedScene" path="res://power_up.tscn" id="4_mmiyr"]
-[ext_resource type="PackedScene" path="res://music.tscn" id="5_j4qqt"]
+[ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
+[ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
+[ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
+
+[sub_resource type="Curve" id="Curve_6pr7g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_or8ax"]
+offsets = PackedFloat32Array(0.0266667, 0.506667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.763078, 0.386352, 1, 0.360708, 0.212965, 0.452198, 1)
+
+[sub_resource type="Gradient" id="Gradient_mcuhc"]
+offsets = PackedFloat32Array(0, 0.519481, 0.935065, 1)
+colors = PackedColorArray(0.343, 0.03, 0.544, 0, 0.062, 0.871, 0.053, 0.649, 0, 100, 0.533, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_odbds"]
+gradient = SubResource("Gradient_mcuhc")
+
+[sub_resource type="Gradient" id="Gradient_6jhuv"]
+offsets = PackedFloat32Array(0.025974, 0.857143, 1)
+colors = PackedColorArray(0.339, 1, 0.611, 0, 0.339333, 1, 0.610765, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfw6j"]
+gradient = SubResource("Gradient_6jhuv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikigc"]
+size = Vector2(24, 1310)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b330g"]
+size = Vector2(28, 1298)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
@@ -28,3 +47,53 @@ script = ExtResource("1_mhqcc")
 [node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
+
+[node name="Right Wall Effects" type="Node2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Right Wall Effects"]
+position = Vector2(0, 640)
+amount = 150
+lifetime = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(1, 640)
+direction = Vector2(-1, 0)
+gravity = Vector2(-980, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 5.0
+scale_amount_max = 7.5
+scale_amount_curve = SubResource("Curve_6pr7g")
+color_ramp = SubResource("Gradient_or8ax")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Right Wall Effects"]
+visible = false
+position = Vector2(-56, 650)
+scale = Vector2(1.7652, 22.6563)
+energy = 0.61
+texture = SubResource("GradientTexture2D_odbds")
+
+[node name="PointLight2D" type="PointLight2D" parent="Right Wall Effects"]
+position = Vector2(-27.5, 647)
+scale = Vector2(1.37109, 1384)
+color = Color(0.339532, 0.88624, 0.604119, 1)
+energy = 1.91
+texture = SubResource("GradientTexture1D_nfw6j")
+height = 1280.0
+
+[node name="Left Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
+position = Vector2(2, 635)
+shape = SubResource("RectangleShape2D_ikigc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left Wall"]
+
+[node name="Right Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
+position = Vector2(719, 641)
+shape = SubResource("RectangleShape2D_b330g")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Right Wall"]

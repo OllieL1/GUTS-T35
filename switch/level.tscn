@@ -48,11 +48,15 @@ script = ExtResource("1_mhqcc")
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 
-[node name="Right Wall Effects" type="Node2D" parent="."]
+[node name="Wall Effects" type="Node2D" parent="."]
+script = ExtResource("7_inbxt")
+
+[node name="Right Wall Effects" type="Node2D" parent="Wall Effects"]
 position = Vector2(720, 0)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Right Wall Effects"]
+[node name="RightParticles" type="CPUParticles2D" parent="Wall Effects/Right Wall Effects"]
 position = Vector2(0, 640)
+emitting = false
 amount = 150
 lifetime = 0.75
 emission_shape = 3
@@ -66,20 +70,29 @@ scale_amount_max = 7.5
 scale_amount_curve = SubResource("Curve_6pr7g")
 color_ramp = SubResource("Gradient_or8ax")
 
-[node name="PointLight2D2" type="PointLight2D" parent="Right Wall Effects"]
-visible = false
-position = Vector2(-56, 650)
-scale = Vector2(1.7652, 22.6563)
-energy = 0.61
-texture = SubResource("GradientTexture2D_odbds")
-
-[node name="PointLight2D" type="PointLight2D" parent="Right Wall Effects"]
-position = Vector2(-27.5, 647)
-scale = Vector2(1.37109, 1384)
-color = Color(0.339532, 0.88624, 0.604119, 1)
-energy = 1.91
+[node name="PointLight2D" type="PointLight2D" parent="Wall Effects/Right Wall Effects"]
+position = Vector2(-208, 647)
+scale = Vector2(2.8125, 1384)
+energy = 16.0
+shadow_enabled = true
 texture = SubResource("GradientTexture1D_nfw6j")
 height = 1280.0
+
+[node name="Left Wall Effects" type="Node2D" parent="Wall Effects"]
+
+[node name="LeftParticles" type="CPUParticles2D" parent="Wall Effects/Left Wall Effects"]
+position = Vector2(0, 640)
+amount = 150
+lifetime = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(1, 640)
+gravity = Vector2(980, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 5.0
+scale_amount_max = 7.5
+scale_amount_curve = SubResource("Curve_6pr7g")
+color_ramp = SubResource("Gradient_or8ax")
 
 [node name="Left Wall" type="StaticBody2D" parent="."]
 

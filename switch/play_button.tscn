@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgjpg6hy66r7p"]
+
+[ext_resource type="Texture2D" uid="uid://chuy41s6cv66l" path="res://art/playButton.png" id="1_bmsgp"]
+
+[node name="Play Button" type="Button"]
+offset_right = 818.0
+offset_bottom = 818.0
+icon = ExtResource("1_bmsgp")

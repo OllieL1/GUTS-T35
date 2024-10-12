@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cc3ne42fyol7d"]
 
-[ext_resource type="PackedScene" uid="uid://pplf3j4ynokc" path="res://player.tscn" id="1_0s2yp"]
+[ext_resource type="PackedScene" uid="uid://61jjvb3yujfk" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
 [ext_resource type="PackedScene" uid="uid://dls6k7r5dkxcp" path="res://background.tscn" id="1_pab6f"]
-[ext_resource type="PackedScene" uid="uid://byd7v6ypku8m4" path="res://obstacle.tscn" id="2_mr6sg"]
-[ext_resource type="PackedScene" path="res://power_up.tscn" id="4_mmiyr"]
-[ext_resource type="PackedScene" path="res://music.tscn" id="5_j4qqt"]
+[ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
+[ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
+[ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]

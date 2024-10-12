@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgtrfvh4dshx4"]
+
+[ext_resource type="Script" path="res://scripts/score.gd" id="1_jx2tg"]
+
+[node name="Score" type="Label"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 86.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+script = ExtResource("1_jx2tg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)

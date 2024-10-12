@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 # Movement variables
 var speed: float = 700
 var acceleration: float = 1800
@@ -8,8 +10,10 @@ var target_velocity: Vector2 = Vector2.ZERO
 var moving_left: bool = false
 var score_multiplier: float = 1.0  # Initial score multiplier
 var score: float = 0
+@onready var levelnode = get_node("/root/Level")
 
 func _ready() -> void:
+	print(levelnode.run)
 	position.x = 360  # Adjust starting position as needed
 	position.y = 1000  # Adjust starting position as needed
 	add_to_group("player")
@@ -24,24 +28,26 @@ func toggle_direction() -> void:
 	moving_left = !moving_left
 
 func _process(delta: float) -> void:
-	if moving_left:
-		target_velocity.x = -speed
-	else:
-		target_velocity.x = speed
+	if(levelnode.run):
+		if moving_left:
+			target_velocity.x = -speed
+		else:
+			target_velocity.x = speed
 
-	if velocity.x != target_velocity.x:
-		if target_velocity.x > velocity.x:
-			velocity.x += acceleration * delta
-		elif target_velocity.x < velocity.x:
-			velocity.x -= deceleration * delta
+		if velocity.x != target_velocity.x:
+			if target_velocity.x > velocity.x:
+				velocity.x += acceleration * delta
+			elif target_velocity.x < velocity.x:
+				velocity.x -= deceleration * delta
 
-		velocity.x = clamp(velocity.x, -speed, speed)
-	else:
-		if velocity.x != 0:
-			velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+			velocity.x = clamp(velocity.x, -speed, speed)
+		else:
+			if velocity.x != 0:
+				velocity.x = move_toward(velocity.x, 0, deceleration * delta)
 
-	self.velocity = velocity
-	move_and_slide()  # Handle movement and sliding
+		self.velocity = velocity
+		move_and_slide() 
+	 # Handle movement and sliding
 
 func move_toward(current: float, target: float, delta: float) -> float:
 	if current < target:

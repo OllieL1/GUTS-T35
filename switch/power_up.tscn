@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cy1qe65gcd50k"]
+[gd_scene load_steps=2 format=3 uid="uid://cy1qe65gcd50k"]
+
+[ext_resource type="Script" path="res://scripts/power_up.gd" id="1_annuv"]
 
 [node name="Power Up" type="Node2D"]
+script = ExtResource("1_annuv")

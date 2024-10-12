@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://7tylxvfamqde"]
+[gd_scene load_steps=7 format=3 uid="uid://7tylxvfamqde"]
 
 [ext_resource type="PackedScene" uid="uid://61jjvb3yujfk" path="res://player.tscn" id="1_0s2yp"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
 [ext_resource type="PackedScene" uid="uid://bxdhrc0kedekp" path="res://background.tscn" id="1_pab6f"]
 [ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_mhqcc")
 
 [node name="Background" parent="." instance=ExtResource("1_pab6f")]
 position = Vector2(493, 302)

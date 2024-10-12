@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://7tylxvfamqde"]
+
+[ext_resource type="PackedScene" uid="uid://61jjvb3yujfk" path="res://player.tscn" id="1_0s2yp"]
+[ext_resource type="PackedScene" uid="uid://bxdhrc0kedekp" path="res://background.tscn" id="1_pab6f"]
+[ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
+[ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_pab6f")]
+position = Vector2(493, 302)
+scale = Vector2(0.5, 0.5)
+
+[node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
+
+[node name="Player" parent="." instance=ExtResource("1_0s2yp")]
+
+[node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]

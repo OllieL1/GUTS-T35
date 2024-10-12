@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=16 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
+[ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -15,19 +16,18 @@ point_count = 2
 offsets = PackedFloat32Array(0.0266667, 0.506667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.763078, 0.386352, 1, 0.360708, 0.212965, 0.452198, 1)
 
-[sub_resource type="Gradient" id="Gradient_mcuhc"]
-offsets = PackedFloat32Array(0, 0.519481, 0.935065, 1)
-colors = PackedColorArray(0.343, 0.03, 0.544, 0, 0.062, 0.871, 0.053, 0.649, 0, 100, 0.533, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_7oxqv"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_odbds"]
-gradient = SubResource("Gradient_mcuhc")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfm8o"]
+gradient = SubResource("Gradient_7oxqv")
+fill_to = Vector2(0.513761, 0)
 
-[sub_resource type="Gradient" id="Gradient_6jhuv"]
-offsets = PackedFloat32Array(0.025974, 0.857143, 1)
-colors = PackedColorArray(0.339, 1, 0.611, 0, 0.339333, 1, 0.610765, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_as5uo"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfw6j"]
-gradient = SubResource("Gradient_6jhuv")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lnb6t"]
+gradient = SubResource("Gradient_as5uo")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.426605, 0.0229358)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikigc"]
 size = Vector2(24, 1310)
@@ -43,12 +43,14 @@ script = ExtResource("1_mhqcc")
 [node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
 
 [node name="Player" parent="." instance=ExtResource("1_0s2yp")]
+position = Vector2(372, 1058)
 
 [node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 
 [node name="Wall Effects" type="Node2D" parent="."]
+script = ExtResource("7_5fh0o")
 
 [node name="Right Wall Effects" type="Node2D" parent="Wall Effects"]
 position = Vector2(720, 0)
@@ -58,6 +60,8 @@ position = Vector2(0, 640)
 emitting = false
 amount = 150
 lifetime = 0.75
+randomness = 0.5
+lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(1, 640)
 direction = Vector2(-1, 0)
@@ -69,13 +73,12 @@ scale_amount_max = 7.5
 scale_amount_curve = SubResource("Curve_6pr7g")
 color_ramp = SubResource("Gradient_or8ax")
 
-[node name="PointLight2D" type="PointLight2D" parent="Wall Effects/Right Wall Effects"]
-position = Vector2(-208, 647)
-scale = Vector2(2.8125, 1384)
-energy = 16.0
+[node name="RightGlow" type="PointLight2D" parent="Wall Effects/Right Wall Effects"]
+visible = false
+position = Vector2(86, 964)
+scale = Vector2(24.918, 34.9531)
 shadow_enabled = true
-texture = SubResource("GradientTexture1D_nfw6j")
-height = 1280.0
+texture = SubResource("GradientTexture2D_yfm8o")
 
 [node name="Left Wall Effects" type="Node2D" parent="Wall Effects"]
 
@@ -83,6 +86,8 @@ height = 1280.0
 position = Vector2(0, 640)
 amount = 150
 lifetime = 0.75
+randomness = 0.5
+lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(1, 640)
 gravity = Vector2(980, 0)
@@ -92,6 +97,12 @@ scale_amount_min = 5.0
 scale_amount_max = 7.5
 scale_amount_curve = SubResource("Curve_6pr7g")
 color_ramp = SubResource("Gradient_or8ax")
+
+[node name="LeftGlow" type="PointLight2D" parent="Wall Effects/Left Wall Effects"]
+position = Vector2(-48, 981)
+scale = Vector2(24.918, 33.2188)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_lnb6t")
 
 [node name="Left Wall" type="StaticBody2D" parent="."]
 

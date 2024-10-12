@@ -23,6 +23,12 @@ colors = PackedColorArray(0.339, 1, 0.611, 0, 0.339333, 1, 0.610765, 1, 0, 0.937
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_nfw6j"]
 gradient = SubResource("Gradient_6jhuv")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikigc"]
+size = Vector2(24, 1310)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b330g"]
+size = Vector2(28, 1298)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
 

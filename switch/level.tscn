@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
+[ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
 [ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="7_58rae"]
 [ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
 [ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
@@ -18,19 +19,18 @@ point_count = 2
 offsets = PackedFloat32Array(0.0266667, 0.506667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.763078, 0.386352, 1, 0.360708, 0.212965, 0.452198, 1)
 
-[sub_resource type="Gradient" id="Gradient_mcuhc"]
-offsets = PackedFloat32Array(0, 0.519481, 0.935065, 1)
-colors = PackedColorArray(0.343, 0.03, 0.544, 0, 0.062, 0.871, 0.053, 0.649, 0, 100, 0.533, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_7oxqv"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_odbds"]
-gradient = SubResource("Gradient_mcuhc")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfm8o"]
+gradient = SubResource("Gradient_7oxqv")
+fill_to = Vector2(0.513761, 0)
 
-[sub_resource type="Gradient" id="Gradient_6jhuv"]
-offsets = PackedFloat32Array(0.025974, 0.857143, 1)
-colors = PackedColorArray(0.339, 1, 0.611, 0, 0.339333, 1, 0.610765, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_as5uo"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfw6j"]
-gradient = SubResource("Gradient_6jhuv")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lnb6t"]
+gradient = SubResource("Gradient_as5uo")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.426605, 0.0229358)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
@@ -40,18 +40,25 @@ script = ExtResource("1_mhqcc")
 [node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
 
 [node name="Player" parent="." instance=ExtResource("1_0s2yp")]
+position = Vector2(372, 1058)
 
 [node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 
-[node name="Right Wall Effects" type="Node2D" parent="."]
+[node name="Wall Effects" type="Node2D" parent="."]
+script = ExtResource("7_5fh0o")
+
+[node name="Right Wall Effects" type="Node2D" parent="Wall Effects"]
 position = Vector2(720, 0)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Right Wall Effects"]
+[node name="RightParticles" type="CPUParticles2D" parent="Wall Effects/Right Wall Effects"]
 position = Vector2(0, 640)
+emitting = false
 amount = 150
 lifetime = 0.75
+randomness = 0.5
+lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(1, 640)
 direction = Vector2(-1, 0)
@@ -63,19 +70,36 @@ scale_amount_max = 7.5
 scale_amount_curve = SubResource("Curve_6pr7g")
 color_ramp = SubResource("Gradient_or8ax")
 
-[node name="PointLight2D2" type="PointLight2D" parent="Right Wall Effects"]
-position = Vector2(-56, 650)
-scale = Vector2(1.7652, 22.6563)
-energy = 0.61
-texture = SubResource("GradientTexture2D_odbds")
+[node name="RightGlow" type="PointLight2D" parent="Wall Effects/Right Wall Effects"]
+visible = false
+position = Vector2(86, 964)
+scale = Vector2(24.918, 34.9531)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_yfm8o")
 
-[node name="PointLight2D" type="PointLight2D" parent="Right Wall Effects"]
-position = Vector2(-27.5, 647)
-scale = Vector2(1.37109, 1384)
-color = Color(0.339532, 0.88624, 0.604119, 1)
-energy = 1.91
-texture = SubResource("GradientTexture1D_nfw6j")
-height = 1280.0
+[node name="Left Wall Effects" type="Node2D" parent="Wall Effects"]
+
+[node name="LeftParticles" type="CPUParticles2D" parent="Wall Effects/Left Wall Effects"]
+position = Vector2(0, 640)
+amount = 150
+lifetime = 0.75
+randomness = 0.5
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 640)
+gravity = Vector2(980, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 5.0
+scale_amount_max = 7.5
+scale_amount_curve = SubResource("Curve_6pr7g")
+color_ramp = SubResource("Gradient_or8ax")
+
+[node name="LeftGlow" type="PointLight2D" parent="Wall Effects/Left Wall Effects"]
+position = Vector2(-48, 981)
+scale = Vector2(24.918, 33.2188)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_lnb6t")
 
 [node name="Left Wall" parent="." instance=ExtResource("7_6vnp7")]
 

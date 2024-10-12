@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="7_58rae"]
+[ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
+[ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -29,12 +31,6 @@ colors = PackedColorArray(0.339, 1, 0.611, 0, 0.339333, 1, 0.610765, 1, 1, 1, 1,
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_nfw6j"]
 gradient = SubResource("Gradient_6jhuv")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikigc"]
-size = Vector2(24, 1310)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b330g"]
-size = Vector2(28, 1298)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
@@ -68,7 +64,6 @@ scale_amount_curve = SubResource("Curve_6pr7g")
 color_ramp = SubResource("Gradient_or8ax")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Right Wall Effects"]
-visible = false
 position = Vector2(-56, 650)
 scale = Vector2(1.7652, 22.6563)
 energy = 0.61
@@ -82,23 +77,12 @@ energy = 1.91
 texture = SubResource("GradientTexture1D_nfw6j")
 height = 1280.0
 
-[node name="Left Wall" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
-position = Vector2(2, 635)
-shape = SubResource("RectangleShape2D_ikigc")
-
-[node name="Sprite2D" type="Sprite2D" parent="Left Wall"]
-
-[node name="Right Wall" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
-position = Vector2(719, 641)
-shape = SubResource("RectangleShape2D_b330g")
-one_way_collision_margin = 0.0
+[node name="Left Wall" parent="." instance=ExtResource("7_6vnp7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="Right Wall"]
 
 [node name="Play Button" parent="." instance=ExtResource("7_58rae")]
 
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
+
+[node name="Right Wall" parent="." instance=ExtResource("8_qo2o3")]

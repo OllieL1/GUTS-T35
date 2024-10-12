@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=2 format=3 uid="uid://xxdo6blqgn2u"]
-=======
 [gd_scene load_steps=2 format=3 uid="uid://dls6k7r5dkxcp"]
->>>>>>> cf1aa7e753b1f19f2b89b47cfb997da669b2f7cc
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_gx55j"]
 

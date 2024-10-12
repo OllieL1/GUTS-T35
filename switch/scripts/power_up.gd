@@ -1,7 +1,8 @@
 extends Area2D
 
 # Score multiplier for the power-up
-var score_multiplier: float = 2.0
+var score_multiplier: float = 10.0
+@onready var scorenode = get_node("/root/Level")
 
 func _ready() -> void:
 	position.x = 600  # Adjust starting position as needed
@@ -15,3 +16,4 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):  # Check if the colliding body is the player
 		body.apply_powerup(self)  # Call the player's apply_powerup method
 		queue_free()  # Remove the power-up after it is collected
+		

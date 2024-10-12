@@ -44,8 +44,6 @@ script = ExtResource("1_mhqcc")
 position = Vector2(372, 1058)
 
 [node name="Timer" type="Timer" parent="Player"]
-wait_time = 5.0
-one_shot = true
 
 [node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
 
@@ -120,5 +118,4 @@ offset_top = 108.0
 offset_right = 423.0
 offset_bottom = 163.0
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

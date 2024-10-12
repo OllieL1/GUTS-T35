@@ -8,6 +8,7 @@ metadata/_edit_vertical_guides_ = [720.0]
 metadata/_edit_horizontal_guides_ = [1299.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
 offset_right = 720.0
 offset_bottom = 1279.0
-color = Color(0.752777, 0.49194, 0.85536, 1)
+color = Color(0, 0, 0, 1)

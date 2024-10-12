@@ -4,13 +4,3 @@
 
 [node name="Hud" type="Node2D"]
 script = ExtResource("1_ldi5e")
-
-[node name="Logo" type="Sprite2D" parent="."]
-
-[node name="High Score" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="High Score"]
-
-[node name="Play Button" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Play Button"]

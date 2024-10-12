@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # Movement variables
 var speed: float = 700
-var acceleration: float = 1800
-var deceleration: float = 1200
+var acceleration: float = 2000
+var deceleration: float = 2000
 var target_velocity: Vector2 = Vector2.ZERO
 var moving_left: bool = false
 var score_multiplier: float = 1.0  # Initial score multiplier

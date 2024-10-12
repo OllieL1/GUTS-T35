@@ -121,4 +121,5 @@ offset_right = 423.0
 offset_bottom = 163.0
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

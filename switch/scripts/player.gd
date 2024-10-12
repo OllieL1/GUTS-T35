@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # Movement variables
 var speed: float = 700
-var acceleration: float = 1800
-var deceleration: float = 1200
+var acceleration: float = 2000
+var deceleration: float = 2000
 var target_velocity: Vector2 = Vector2.ZERO
 var moving_left: bool = false
 var score_multiplier: float = 1.0  # Initial score multiplier
@@ -71,6 +71,9 @@ func apply_powerup(powerup: Node) -> void:
 	multiplier_timer.start() 
 	print("TIMER START") # Start the timer when a power-up is applied
 
+func apply_effect(obstacle : Node) -> void:
+	print("GAME OVER")
+	get_tree().quit()
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("powerups"):  # Check if the collided body is a power-up

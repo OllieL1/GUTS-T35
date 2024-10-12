@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://djm33ltide0rx"]
+[gd_scene load_steps=4 format=3 uid="uid://b71mrkv34tnqu"]
 
-[ext_resource type="Script" path="res://scripts/obstacleFactory.gd" id="1_7h52b"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_jjjkl"]
+[ext_resource type="Texture2D" uid="uid://csengjieesbf5" path="res://art/blades.png" id="2_ircdu"]
 
-[node name="Obstacle" type="Node2D"]
-script = ExtResource("1_7h52b")
+[sub_resource type="CircleShape2D" id="CircleShape2D_ecx7r"]
+radius = 67.2681
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_jjjkl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -9)
+scale = Vector2(0.257812, 0.249023)
+texture = ExtResource("2_ircdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.15256e-07, -3)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ecx7r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

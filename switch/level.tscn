@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=16 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
+[ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="7_58rae"]
 [ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
 [ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
 
@@ -77,5 +78,11 @@ texture = SubResource("GradientTexture1D_nfw6j")
 height = 1280.0
 
 [node name="Left Wall" parent="." instance=ExtResource("7_6vnp7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Right Wall"]
+
+[node name="Play Button" parent="." instance=ExtResource("7_58rae")]
+
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
 
 [node name="Right Wall" parent="." instance=ExtResource("8_qo2o3")]

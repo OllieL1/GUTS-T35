@@ -92,7 +92,7 @@ initial_velocity_max = 10.0
 scale_amount_min = 5.0
 scale_amount_max = 7.5
 scale_amount_curve = SubResource("Curve_6pr7g")
-color_ramp = SubResource("Gradient_or8ax")
+color_ramp = SubResource("Gradient_or8ax")]
 
 [node name="Left Wall" type="StaticBody2D" parent="."]
 

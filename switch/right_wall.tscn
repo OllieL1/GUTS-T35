@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://de083s1b7pfpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b330g"]
+size = Vector2(10, 1298)
+
+[node name="Right Wall" type="StaticBody2D"]
+position = Vector2(720, 639)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_b330g")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

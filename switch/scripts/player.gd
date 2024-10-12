@@ -6,10 +6,13 @@ var acceleration: float = 1800
 var deceleration: float = 1200
 var target_velocity: Vector2 = Vector2.ZERO
 var moving_left: bool = false
+var score_multiplier: float = 1.0  # Initial score multiplier
+var score: float = 0
 
 func _ready() -> void:
-	position.x = 360
-	position.y = 1000
+	position.x = 360  # Adjust starting position as needed
+	position.y = 1000  # Adjust starting position as needed
+	add_to_group("player")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -38,8 +41,7 @@ func _process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, deceleration * delta)
 
 	self.velocity = velocity
-
-	move_and_slide()
+	move_and_slide()  # Handle movement and sliding
 
 func move_toward(current: float, target: float, delta: float) -> float:
 	if current < target:
@@ -47,3 +49,13 @@ func move_toward(current: float, target: float, delta: float) -> float:
 	elif current > target:
 		return max(current - delta, target)
 	return current
+
+# Method to apply the power-up effect
+func apply_powerup(powerup: Node) -> void:
+	score_multiplier *= powerup.score_multiplier  # Increase the multiplier
+	print("New Score Multiplier: ", score_multiplier)  # Debug output
+	
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("powerups"):  # Check if the collided body is a power-up
+		apply_powerup(body)  # Apply the power-up
+		body.queue_free()  # Remove the power-up from the scene

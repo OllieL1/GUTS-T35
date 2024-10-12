@@ -49,7 +49,6 @@ script = ExtResource("1_mhqcc")
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 
 [node name="Wall Effects" type="Node2D" parent="."]
-script = ExtResource("7_inbxt")
 
 [node name="Right Wall Effects" type="Node2D" parent="Wall Effects"]
 position = Vector2(720, 0)

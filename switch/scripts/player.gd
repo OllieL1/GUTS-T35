@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 # Movement variables
-var speed: float = 600
-var acceleration: float = 1600
-var deceleration: float = 1600
+var speed: float = 700
+var acceleration: float = 1800
+var deceleration: float = 1200
 var target_velocity: Vector2 = Vector2.ZERO
 var moving_left: bool = false
 
 func _ready() -> void:
-	print("Player is ready!")
+	position.x = 360
+	position.y = 1000
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -18,7 +19,6 @@ func _input(event: InputEvent) -> void:
 
 func toggle_direction() -> void:
 	moving_left = !moving_left
-	print("Direction toggled: ", moving_left)
 
 func _process(delta: float) -> void:
 	if moving_left:
@@ -36,6 +36,8 @@ func _process(delta: float) -> void:
 	else:
 		if velocity.x != 0:
 			velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+
+	self.velocity = velocity
 
 	move_and_slide()
 

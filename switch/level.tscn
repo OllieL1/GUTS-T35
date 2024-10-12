@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=17 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
-[ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="7_58rae"]
-[ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
-[ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
+[ext_resource type="PackedScene" path="res://left_wall.tscn" id="7_6vnp7"]
+[ext_resource type="PackedScene" path="res://play_button.tscn" id="7_58rae"]
+[ext_resource type="PackedScene" path="res://right_wall.tscn" id="8_qo2o3"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -103,10 +103,10 @@ texture = SubResource("GradientTexture2D_lnb6t")
 
 [node name="Left Wall" parent="." instance=ExtResource("7_6vnp7")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Right Wall"]
+[node name="Right Wall#Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Play Button" parent="." instance=ExtResource("7_58rae")]
 
-[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
-
 [node name="Right Wall" parent="." instance=ExtResource("8_qo2o3")]
+
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

@@ -55,7 +55,7 @@ func apply_powerup(powerup: Node) -> void:
 	score_multiplier *= powerup.score_multiplier  # Increase the multiplier
 	print("New Score Multiplier: ", score_multiplier)  # Debug output
 	
-func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("powerups"):  # Check if the collided body is a power-up
-		apply_powerup(body)  # Apply the power-up
-		body.queue_free()  # Remove the power-up from the scene
+func apply_effect(obstacle : Node) -> void:
+	print("GAME OVER")
+	get_tree().quit()
+	

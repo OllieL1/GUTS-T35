@@ -26,7 +26,7 @@ func _ready() -> void:
 	position.x = 360  # Adjust starting position as needed
 	position.y = 1000  # Adjust starting position as needed
 	add_to_group("player")
-	explosion_particles.emitting = false  # Ensure particles do not emit at start
+	#explosion_particles.emitting = false  # Ensure particles do not emit at start
 	original_texture = sprite.texture  # Store the original texture
 
 func _input(event: InputEvent) -> void:
@@ -106,7 +106,7 @@ func change_texture(new_texture: Texture) -> void:
 
 func apply_effect(obstacle: Node) -> void:
 	if not invincible:
-    play_explosion()  # Play the explosion effect
+		play_explosion()  # Play the explosion effect
 		var level_script = get_parent()  # Get the parent node (Level)
 		level_script.game_over() 
 

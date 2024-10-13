@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=21 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -7,14 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
-
-[ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
+[ext_resource type="PackedScene" path="res://left_wall.tscn" id="7_6vnp7"]
 [ext_resource type="PackedScene" path="res://play_button.tscn" id="7_58rae"]
-[ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
+[ext_resource type="PackedScene" path="res://right_wall.tscn" id="8_qo2o3"]
 [ext_resource type="PackedScene" path="res://score.tscn" id="11_chyus"]
 [ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
-[ext_resource type="PackedScene" path="res://spike.tscn" id="12_rqod6"]
-[ext_resource type="Texture2D" uid="uid://j7pkccdnnvw7" path="res://art/playerPiece.png" id="14_b722t"]
+[ext_resource type="PackedScene" uid="uid://cnl46evkh3f4f" path="res://spike.tscn" id="12_rqod6"]
 [ext_resource type="PackedScene" uid="uid://dw00q060smlx5" path="res://doublePowerUp.tscn" id="14_uelel"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
@@ -37,10 +35,6 @@ fill_to = Vector2(0.513761, 0)
 gradient = SubResource("Gradient_as5uo")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.426605, 0.0229358)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m38f3"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
@@ -140,13 +134,6 @@ offset_bottom = 8.0
 icon = ExtResource("12_qkjp8")
 
 [node name="Spike" parent="." instance=ExtResource("12_rqod6")]
-
-[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
-amount = 200
-process_material = SubResource("ParticleProcessMaterial_m38f3")
-texture = ExtResource("14_b722t")
-lifetime = 2.0
-trail_enabled = true
 
 [node name="DoublePowerUp" parent="." instance=ExtResource("14_uelel")]
 

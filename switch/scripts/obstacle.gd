@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed : float = 250
+var speed : float = 450
 var random_new_spawn : int
 var nextCreated : bool = false
 

@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dls6k7r5dkxcp"]
+[gd_scene load_steps=4 format=3 uid="uid://dls6k7r5dkxcp"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_gx55j"]
+[ext_resource type="Texture2D" uid="uid://cj58rae50eh6" path="res://art/particle.png" id="2_np77r"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dlml"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(50, 50, 1)
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 2000, 0)
+scale_min = 0.05
+scale_max = 0.05
+turbulence_enabled = true
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_gx55j")
@@ -11,3 +23,18 @@ metadata/_edit_horizontal_guides_ = [1299.0]
 offset_right = 748.0
 offset_bottom = 1354.0
 color = Color(0.572606, 0.443363, 1, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.721569, 0.721569, 0.721569, 0.372549)
+position = Vector2(360, 600)
+scale = Vector2(360, 360)
+amount = 500
+amount_ratio = 0.5
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_7dlml")
+texture = ExtResource("2_np77r")
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 5
+trail_section_subdivisions = 3

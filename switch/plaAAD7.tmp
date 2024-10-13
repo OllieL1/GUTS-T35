@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfegi"]
-size = Vector2(76, 75.5)
+size = Vector2(80, 77)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dj4qw"]
 polygon = PackedVector2Array(-35, -48, -39, -46, -43, -42, -44, -38, -44, 16, -42, 21, -40, 23, -35, 25, 20, 25, 22, 24, 25, 22, 28, 20, 30, 16, 30, -39, 28, -43, 24, -46, 20, -48)
@@ -47,7 +47,7 @@ texture = ExtResource("2_6ppwh")
 sprite_frames = SubResource("SpriteFrames_ical7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 2.25)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_pfegi")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

@@ -32,10 +32,14 @@ func _ready() -> void:
 	original_texture = sprite.texture
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				toggle_direction()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			toggle_direction()
+	elif event is InputEventKey and event.keycode == KEY_SPACE:
+		if event.pressed:
+			toggle_direction()
+
+
 
 func toggle_direction() -> void:
 	moving_left = !moving_left

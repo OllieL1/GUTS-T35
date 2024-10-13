@@ -53,6 +53,13 @@ func _input(event: InputEvent) -> void:
 		elif game_over_state:
 			reset_game()
 
+	elif event is InputEventKey and event.keycode == KEY_SPACE and event.pressed:
+		if waiting_for_start:
+			start_game()
+		elif game_over_state:
+			reset_game()
+
+
 # Reset game state and reload the scene
 func reset_game() -> void:
 	run = false

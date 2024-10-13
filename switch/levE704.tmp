@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=20 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -7,21 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
-[ext_resource type="PackedScene" path="res://left_wall.tscn" id="7_6vnp7"]
-[ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="7_58rae"]
-[ext_resource type="PackedScene" path="res://right_wall.tscn" id="8_qo2o3"]
-[ext_resource type="PackedScene" uid="uid://cgtrfvh4dshx4" path="res://score.tscn" id="11_chyus"]
+[ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
+[ext_resource type="PackedScene" path="res://play_button.tscn" id="7_58rae"]
+[ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
+[ext_resource type="PackedScene" path="res://score.tscn" id="11_chyus"]
 [ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
-[ext_resource type="PackedScene" uid="uid://cnl46evkh3f4f" path="res://spike.tscn" id="12_rqod6"]
-[ext_resource type="Texture2D" uid="uid://j7pkccdnnvw7" path="res://art/playerPiece.png" id="14_b722t"]
-[ext_resource type="PackedScene" uid="uid://dw00q060smlx5" path="res://doublePowerUp.tscn" id="14_uelel"]
-[ext_resource type="PackedScene" path="res://high_score.tscn" id="15_7ikkh"]
-[ext_resource type="Script" path="res://scripts/high_score.gd" id="16_p3owe"]
-[ext_resource type="PackedScene" uid="uid://ddcdcvkdl5bte" path="res://title.tscn" id="17_vw601"]
-[ext_resource type="PackedScene" uid="uid://x734jhshx8q8" path="res://game_over.tscn" id="18_eb6ar"]
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="19_1nr5r"]
-[ext_resource type="PackedScene" uid="uid://ibupqw4ajrrb" path="res://prompt.tscn" id="20_ye2cm"]
-[ext_resource type="Theme" uid="uid://8ebscnbw6hne" path="res://themes/title.tres" id="21_j0qtu"]
+[ext_resource type="PackedScene" path="res://spike.tscn" id="12_rqod6"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -43,27 +34,6 @@ fill_to = Vector2(0.513761, 0)
 gradient = SubResource("Gradient_as5uo")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.426605, 0.0229358)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2bwg"]
-particle_flag_disable_z = true
-angle_min = -462.9
-angle_max = 339.4
-direction = Vector3(0, -1, 0)
-spread = 180.0
-initial_velocity_min = 1000.0
-initial_velocity_max = 1000.0
-angular_velocity_min = 58.32
-angular_velocity_max = 262.23
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 100.0
-linear_accel_max = 100.0
-radial_accel_min = -5.71
-radial_accel_max = 2.85
-scale_min = 0.5
-anim_speed_min = 16.0
-anim_speed_max = 16.0
-anim_offset_min = 1.0
-anim_offset_max = 1.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhqcc")
@@ -146,7 +116,6 @@ texture = SubResource("GradientTexture2D_lnb6t")
 [node name="Right Wall#Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Play Button" parent="." instance=ExtResource("7_58rae")]
-visible = false
 
 [node name="Right Wall" parent="." instance=ExtResource("8_qo2o3")]
 
@@ -157,63 +126,11 @@ offset_right = 423.0
 offset_bottom = 163.0
 
 [node name="Restart Button" type="Button" parent="."]
-visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 icon = ExtResource("12_qkjp8")
 
 [node name="Spike" parent="." instance=ExtResource("12_rqod6")]
-
-[node name="DoublePowerUp" parent="." instance=ExtResource("14_uelel")]
-
-[node name="High Score" parent="." instance=ExtResource("15_7ikkh")]
-top_level = true
-offset_left = 55.0
-offset_top = 434.0
-offset_right = 685.0
-offset_bottom = 755.0
-script = ExtResource("16_p3owe")
-
-[node name="Title" parent="." instance=ExtResource("17_vw601")]
-offset_left = 166.0
-offset_top = 155.0
-offset_right = 578.0
-offset_bottom = 928.0
-theme_override_colors/default_color = Color(1, 0.647059, 0, 1)
-bbcode_enabled = true
-text = "[center]SWITCH
-"
-fit_content = true
-
-[node name="Game Over" parent="." instance=ExtResource("18_eb6ar")]
-top_level = true
-offset_left = 211.0
-offset_top = 767.0
-offset_right = 524.0
-offset_bottom = 938.0
-theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-script = ExtResource("19_1nr5r")
-
-[node name="Prompt" parent="." instance=ExtResource("20_ye2cm")]
-top_level = true
-offset_left = 47.0
-offset_top = 660.0
-offset_right = 663.0
-offset_bottom = 968.0
-theme = ExtResource("21_j0qtu")
-bbcode_enabled = true
-text = "[center]Tap to play!"
-
-[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_n2bwg")
-texture = ExtResource("14_b722t")
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.28
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

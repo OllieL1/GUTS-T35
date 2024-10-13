@@ -26,7 +26,7 @@ func _ready() -> void:
 	position.x = 360  # Adjust starting position as needed
 	position.y = 1000  # Adjust starting position as needed
 	add_to_group("player")
-	#explosion_particles.emitting = false  # Ensure particles do not emit at start
+	explosion_particles.emitting = false  # Ensure particles do not emit at start
 	original_texture = sprite.texture  # Store the original texture
 
 func _input(event: InputEvent) -> void:
@@ -82,21 +82,18 @@ func apply_powerup(powerup: Node) -> void:
 	
 func apply_double(powerup: Node) -> void:
 	score_multiplier *= powerup.score_multiplier  # Increase the multiplier  # Debug output
-	print("New Score Multiplier: ", score_multiplier)
 	multiplier_timer.start() 
-	print("TIMER START")  # Start the timer when a power-up is applied
 
 func play_explosion() -> void:
-	#explosion_particles.position = position  # Set position relative to player
-	#explosion_particles.emitting = true
-	#explosion_particles.show()  # Ensure particles are visible
-	#self.visible = false  # Hide the player
-	#trailnode.visible = false  # Hide the trail  # Start emitting particles
+	explosion_particles.position = position  # Set position relative to player
+	explosion_particles.show()  # Ensure particles are visible
+	self.visible = false  # Hide the player
+	trailnode.visible = false  # Hide the trail  # Start emitting particles
+	explosion_particles.emitting = true
 
-	#await get_tree().create_timer(0.2).timeout  # Wait for 2 seconds
-	#explosion_particles.emitting = false  # Stop emitting particles
-	#explosion_particles.hide()  # Optionally hide particles after use
-	pass
+	await get_tree().create_timer(0.2).timeout  # Wait for 2 seconds
+	explosion_particles.emitting = false  # Stop emitting particles
+	explosion_particles.hide()  # Optionally hide particles after use
   
 func change_texture(new_texture: Texture) -> void:
 	if new_texture:  # Check if the texture is valid

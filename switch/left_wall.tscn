@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct304pftvmk86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikigc"]
-size = Vector2(24, 1310)
+size = Vector2(10, 1310)
 
 [node name="Left Wall" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 635)
+position = Vector2(-5, 635)
 shape = SubResource("RectangleShape2D_ikigc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,24 +1,25 @@
 extends Area2D
 
+# Score multiplier for the power-up
+var score_multiplier: float = 10.0
 var speed: int = 125
 var random_new_spawn: int
 var nextCreated: bool = false
 
-# Called when the node enters the scene tree for the first time.
+@onready var scorenode = get_node("/root/Level")
+
 func _ready() -> void:
 	position.x = randi_range(100, 500)  # Random X position within bounds
-	position.y = randi_range(-700,-1300)  # Start just above the top of the screen
+	position.y = randi_range(-200, -1800)  # Start just above the top of the screen
 	random_new_spawn = randi_range(15, 20)  # Random Y position to trigger the duplication
 	add_to_group("powerup_group")  # Add to a group for easy access if needed
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Only move and spawn new power-ups if the game is running
 	if get_parent().run:
 		position.y += speed * delta  # Move downwards
 
-		if position.y > get_viewport().size.y + get_node("Score Up").get_rect().size.y and nextCreated == false:
-			print("new created")
+		if position.y > get_viewport().size.y + get_node("Sprite2D").get_rect().size.y and nextCreated == false:
 			nextCreated = true
 			duplicate_powerup()
 			queue_free()
@@ -30,8 +31,8 @@ func duplicate_powerup() -> void:
 	new_powerup.position.x = randi_range(100, 500)  # Random X position for the new power-up
 	get_parent().add_child(new_powerup)  # Add the new power-up to the scene
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		body.apply_powerup(self)  # Call a method on the player to apply the shield effect
-		duplicate_powerup()
-		queue_free()  # Remove the power-up after collection
+# This function is triggered when another body enters the area
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("player"):  # Check if the colliding body is the player
+		body.apply_double(self)  # Call the player's apply_powerup method
+		queue_free()  # Remove the power-up after it is collected

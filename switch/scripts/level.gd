@@ -32,7 +32,7 @@ func start_game() -> void:
 func game_over() -> void:
 	run = false  # Stop the game
 	game_over_state = true  # Set game over state to true
-	$"Restart Button".visible = true  # Optionally show the restart button
+	$"Restart Button".visible = false  # Optionally show the restart button
 
 # Handle clicking anywhere on the screen to start or restart the game
 func _input(event: InputEvent) -> void:

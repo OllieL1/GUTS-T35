@@ -15,6 +15,7 @@ var invincible: bool = false
 @onready var scorenode = get_parent().get_node("Score")
 @onready var trailnode = get_node("Trail2D")
 @onready var multiplier_timer = $Timer  # Reference to the Timer node
+@onready var explosion_particles = get_parent().get_node("ExplosionParticles")  # Adjusted path to reference particles
 @onready var invincibility_timer = $InvincibilityTimer  # Reference to the Invincibility Timer
 @onready var sprite = $Sprite2D  # Change this to your actual sprite node name
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	position.x = 360  # Adjust starting position as needed
 	position.y = 1000  # Adjust starting position as needed
 	add_to_group("player")
+	explosion_particles.emitting = false  # Ensure particles do not emit at start
 	original_texture = sprite.texture  # Store the original texture
 
 func _input(event: InputEvent) -> void:
@@ -37,7 +39,7 @@ func toggle_direction() -> void:
 	moving_left = !moving_left
 
 func _process(delta: float) -> void:
-	if(levelnode.run):
+	if levelnode.run:
 		if moving_left:
 			target_velocity.x = -speed
 		else:
@@ -82,8 +84,19 @@ func apply_double(powerup: Node) -> void:
 	score_multiplier *= powerup.score_multiplier  # Increase the multiplier  # Debug output
 	print("New Score Multiplier: ", score_multiplier)
 	multiplier_timer.start() 
-	print("TIMER START") # Start the timer when a power-up is applied
+	print("TIMER START")  # Start the timer when a power-up is applied
 
+func play_explosion() -> void:
+	explosion_particles.position = position  # Set position relative to player
+	explosion_particles.emitting = true
+	explosion_particles.show()  # Ensure particles are visible
+	self.visible = false  # Hide the player
+	trailnode.visible = false  # Hide the trail  # Start emitting particles
+
+	await get_tree().create_timer(0.2).timeout  # Wait for 2 seconds
+	explosion_particles.emitting = false  # Stop emitting particles
+	explosion_particles.hide()  # Optionally hide particles after use
+  
 func change_texture(new_texture: Texture) -> void:
 	if new_texture:  # Check if the texture is valid
 		sprite.texture = new_texture  # Change the texture of the sprite
@@ -93,6 +106,7 @@ func change_texture(new_texture: Texture) -> void:
 
 func apply_effect(obstacle: Node) -> void:
 	if not invincible:
+    play_explosion()  # Play the explosion effect
 		var level_script = get_parent()  # Get the parent node (Level)
 		level_script.game_over() 
 

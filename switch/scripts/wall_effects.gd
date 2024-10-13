@@ -21,7 +21,11 @@ func toggleWall():
 	var leftParticles = $"Left Wall Effects/LeftParticles"
 	var rightGlow = $"Right Wall Effects/RightGlow"
 	var leftGlow = $"Left Wall Effects/LeftGlow"
+	var rightLightGlow = $"Right Wall Effects/RightLightGlow"
+	var leftLightGlow = $"Left Wall Effects/LeftLightGlow"
 	leftParticles.emitting=!leftParticles.emitting
 	rightParticles.emitting=!rightParticles.emitting
 	leftGlow.visible=!leftGlow.visible
 	rightGlow.visible=!rightGlow.visible
+	leftLightGlow.visible=!leftLightGlow.visible
+	rightLightGlow.visible=!rightLightGlow.visible

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8ebscnbw6hne"]
+
+[sub_resource type="SystemFont" id="SystemFont_lph2p"]
+
+[resource]
+default_font = SubResource("SystemFont_lph2p")
+RichTextLabel/constants/outline_size = 18
+RichTextLabel/font_sizes/bold_font_size = 28
+RichTextLabel/font_sizes/normal_font_size = 100

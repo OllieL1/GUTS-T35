@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddcdcvkdl5bte"]
+
+[ext_resource type="Theme" uid="uid://8ebscnbw6hne" path="res://themes/title.tres" id="1_0q5xr"]
+[ext_resource type="Script" path="res://scripts/rich_text_label.gd" id="2_41pwf"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+top_level = true
+offset_left = 198.0
+offset_top = 161.0
+offset_right = 610.0
+offset_bottom = 343.0
+theme = ExtResource("1_0q5xr")
+text = "SWITCH
+"
+script = ExtResource("2_41pwf")

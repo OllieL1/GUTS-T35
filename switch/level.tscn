@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=23 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cgtrfvh4dshx4" path="res://score.tscn" id="11_chyus"]
 [ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
 [ext_resource type="PackedScene" path="res://spike.tscn" id="12_rqod6"]
+[ext_resource type="PackedScene" uid="uid://ddcdcvkdl5bte" path="res://title.tscn" id="14_ukafi"]
+[ext_resource type="PackedScene" uid="uid://bojliu6oq07qo" path="res://high_score.tscn" id="15_gnn6k"]
+[ext_resource type="Script" path="res://scripts/high_score.gd" id="16_8odt8"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -116,14 +119,15 @@ texture = SubResource("GradientTexture2D_lnb6t")
 [node name="Right Wall#Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Play Button" parent="." instance=ExtResource("7_58rae")]
+visible = false
 
 [node name="Right Wall" parent="." instance=ExtResource("8_qo2o3")]
 
 [node name="Score" parent="." instance=ExtResource("11_chyus")]
-offset_left = 272.0
-offset_top = 108.0
-offset_right = 423.0
-offset_bottom = 163.0
+offset_left = 275.0
+offset_top = 118.0
+offset_right = 426.0
+offset_bottom = 173.0
 
 [node name="Restart Button" type="Button" parent="."]
 offset_right = 8.0
@@ -131,6 +135,19 @@ offset_bottom = 8.0
 icon = ExtResource("12_qkjp8")
 
 [node name="Spike" parent="." instance=ExtResource("12_rqod6")]
+
+[node name="Title" parent="." instance=ExtResource("14_ukafi")]
+offset_left = 174.0
+offset_top = 246.0
+offset_right = 586.0
+offset_bottom = 428.0
+
+[node name="High Score" parent="." instance=ExtResource("15_gnn6k")]
+offset_left = 41.0
+offset_top = 471.0
+offset_right = 671.0
+offset_bottom = 792.0
+script = ExtResource("16_8odt8")
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]

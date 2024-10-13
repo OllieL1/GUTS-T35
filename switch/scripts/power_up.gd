@@ -1,13 +1,13 @@
 extends Area2D
 
-var speed: int = 125
+var speed: int = 550
 var random_new_spawn: int
 var nextCreated: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	position.x = randi_range(100, 500)  # Random X position within bounds
-	position.y = randi_range(-700,-1300)  # Start just above the top of the screen
+	position.y = randi_range(-1500,-2500)  # Start just above the top of the screen
 	random_new_spawn = randi_range(15, 20)  # Random Y position to trigger the duplication
 	add_to_group("powerup_group")  # Add to a group for easy access if needed
 

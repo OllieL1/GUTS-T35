@@ -4,6 +4,7 @@ extends RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	modulate.a = 0
 	pass # Replace with function body.
 
 #testing comment

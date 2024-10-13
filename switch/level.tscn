@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
 [ext_resource type="PackedScene" uid="uid://dls6k7r5dkxcp" path="res://background.tscn" id="1_pab6f"]
-[ext_resource type="PackedScene" uid="uid://b71mrkv34tnqu" path="res://obstacle.tscn" id="2_mr6sg"]
+[ext_resource type="PackedScene" uid="uid://djm33ltide0rx" path="res://obstacle.tscn" id="2_mr6sg"]
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
 [ext_resource type="PackedScene" uid="uid://cgtrfvh4dshx4" path="res://score.tscn" id="11_chyus"]
 [ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
-[ext_resource type="PackedScene" uid="uid://cnl46evkh3f4f" path="res://spike.tscn" id="12_rqod6"]
+[ext_resource type="PackedScene" path="res://spike.tscn" id="12_rqod6"]
 [ext_resource type="Texture2D" uid="uid://j7pkccdnnvw7" path="res://art/playerPiece.png" id="14_b722t"]
 [ext_resource type="PackedScene" uid="uid://dw00q060smlx5" path="res://doublePowerUp.tscn" id="14_uelel"]
 [ext_resource type="PackedScene" uid="uid://bojliu6oq07qo" path="res://high_score.tscn" id="15_7ikkh"]
@@ -21,6 +21,11 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akbsf"]
 polygon = PackedVector2Array(0, -42, -4, -32, -23, -22, -34, -26, -29, -16, -33, -3, -43, 1, -33, 4, -29, 17, -34, 27, -24, 24, -4, 34, 0, 43, 4, 35, 26, 24, 34, 27, 31, 18, 36, 4, 45, 1, 35, -4, 30, -15, 35, -26, 25, -22, 6, -31)
+
+[ext_resource type="PackedScene" path="res://game_over.tscn" id="18_eb6ar"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="19_1nr5r"]
+[ext_resource type="PackedScene" path="res://prompt.tscn" id="20_ye2cm"]
+[ext_resource type="Theme" path="res://themes/title.tres" id="21_j0qtu"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -204,15 +209,44 @@ occluder_light_mask = 2
 [node name="DoublePowerUp" parent="." instance=ExtResource("14_uelel")]
 
 [node name="High Score" parent="." instance=ExtResource("15_7ikkh")]
-offset_left = 52.0
-offset_right = 682.0
+top_level = true
+offset_left = 55.0
+offset_top = 434.0
+offset_right = 685.0
+offset_bottom = 755.0
 script = ExtResource("16_p3owe")
 
 [node name="Title" parent="." instance=ExtResource("17_vw601")]
-offset_left = 177.0
-offset_top = 163.0
-offset_right = 589.0
-offset_bottom = 345.0
+offset_left = 166.0
+offset_top = 155.0
+offset_right = 578.0
+offset_bottom = 928.0
+theme_override_colors/default_color = Color(1, 0.647059, 0, 1)
+bbcode_enabled = true
+text = "[center]SWITCH
+"
+fit_content = true
+
+[node name="Game Over" parent="." instance=ExtResource("18_eb6ar")]
+top_level = true
+offset_left = 211.0
+offset_top = 767.0
+offset_right = 524.0
+offset_bottom = 938.0
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+script = ExtResource("19_1nr5r")
+
+[node name="Prompt" parent="." instance=ExtResource("20_ye2cm")]
+top_level = true
+offset_left = 47.0
+offset_top = 660.0
+offset_right = 663.0
+offset_bottom = 968.0
+theme = ExtResource("21_j0qtu")
+bbcode_enabled = true
+text = "[center]Tap to play!"
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false

@@ -1,7 +1,7 @@
 extends Node2D
 
 var base_speed: float = 450  # Base speed for obstacles
-var speed_increment: float = 2  # How much the speed should increase with each new obstacle
+var speed_increment: float = 3  # How much the speed should increase with each new obstacle
 var max_speed: float = 800  # Maximum speed cap for obstacles
 var speed: float = base_speed  # Initialize speed to the base speed
 var random_new_spawn: int
@@ -11,7 +11,7 @@ var nextCreated: bool = false
 func _ready() -> void:
 	position.x = randi_range(150, 570)
 	position.y = -50
-	random_new_spawn = randi_range(100, 700)
+	random_new_spawn = randi_range(200, 700)
 	add_to_group("obstacle_group")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +33,6 @@ func duplicate_obstacle() -> void:
 	var new_obstacle = self.duplicate()  # Duplicate the current obstacle
 	new_obstacle.position = Vector2(randi_range(100, 500), -50)  # Spawn it at the top with a random X position
 	new_obstacle.set_speed(speed + speed_increment)  # Increase the speed for the new obstacle
-	print(new_obstacle.speed)
 	get_parent().add_child(new_obstacle)  # Add the new obstacle to the scene
 
 # Function to set speed dynamically with a maximum speed cap

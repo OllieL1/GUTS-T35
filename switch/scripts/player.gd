@@ -74,8 +74,8 @@ func apply_powerup(powerup: Node) -> void:
 	print("TIMER START") # Start the timer when a power-up is applied
 
 func apply_effect(obstacle : Node) -> void:
-	print("GAME OVER")
-	get_tree().quit()
+	var level_script = get_parent()  # Get the parent node (Level)
+	level_script.game_over() 
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("powerups"):  # Check if the collided body is a power-up

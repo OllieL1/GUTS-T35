@@ -9,18 +9,23 @@ var moving_left: bool = false
 var score_multiplier: float = 1.0  # Initial score multiplier
 var score: float = 0
 var multiplier_duration: float = 5.0
+var invincible: bool = false
 
 @onready var levelnode = get_node("/root/Level")
 @onready var scorenode = get_parent().get_node("Score")
 @onready var trailnode = get_node("Trail2D")
 @onready var multiplier_timer = $Timer  # Reference to the Timer node
+@onready var invincibility_timer = $InvincibilityTimer  # Reference to the Invincibility Timer
+@onready var sprite = $Sprite2D  # Change this to your actual sprite node name
+
+var original_texture: Texture  # Variable to hold the original texture
 
 func _ready() -> void:
-	print("Bitch")
 	print(levelnode.run)
 	position.x = 360  # Adjust starting position as needed
 	position.y = 1000  # Adjust starting position as needed
 	add_to_group("player")
+	original_texture = sprite.texture  # Store the original texture
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -68,22 +73,40 @@ func inc_score() -> void:
 
 # Method to apply the power-up effect
 func apply_powerup(powerup: Node) -> void:
+	invincible = true
+	var invincible_texture = load("res://art/invincible.png")  # Ensure this path is correct
+	change_texture(invincible_texture)  # Change to the invincibility texture
+	invincibility_timer.start()  # Start the invincibility timer
+	
+func apply_double(powerup: Node) -> void:
 	score_multiplier *= powerup.score_multiplier  # Increase the multiplier  # Debug output
 	print("New Score Multiplier: ", score_multiplier)
 	multiplier_timer.start() 
 	print("TIMER START") # Start the timer when a power-up is applied
 
-func apply_effect(obstacle : Node) -> void:
-	var level_script = get_parent()  # Get the parent node (Level)
-	level_script.game_over() 
+func change_texture(new_texture: Texture) -> void:
+	if new_texture:  # Check if the texture is valid
+		sprite.texture = new_texture  # Change the texture of the sprite
+		print("Texture changed successfully.")
+	else:
+		print("Failed to load new texture.")
+
+func apply_effect(obstacle: Node) -> void:
+	if not invincible:
+		var level_script = get_parent()  # Get the parent node (Level)
+		level_script.game_over() 
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("powerups"):  # Check if the collided body is a power-up
 		apply_powerup(body)  # Apply the power-up
 		body.queue_free()  # Remove the power-up from the scene
 
-
 func _on_timer_timeout() -> void:
 	print("TIMEOUT")
 	score_multiplier = 1.0  # Reset to 1x multiplier
 	print("Multiplier reset to 1x")  # Debug output
+
+func _on_invincibility_timer_timeout() -> void:
+	invincible = false  # Reset invincibility status
+	change_texture(original_texture)  # Change back to the original texture
+	print("Invincibility expired")  # Debug output

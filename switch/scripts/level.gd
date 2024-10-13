@@ -9,14 +9,12 @@ func _ready() -> void:
 	# Initialize by hiding the restart button
 	$"Restart Button".visible = false
 	waiting_for_start = true  # Waiting for player to start the game
-	pass
 
 # Main loop
 func _process(delta: float) -> void:
 	if run == true:
 		# Add game logic here when the game is running
 		pass
-	pass
 
 # Called when the play button is pressed to start the game (optional if keeping the button)
 func _on_play_button_pressed() -> void:

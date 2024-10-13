@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cy1qe65gcd50k" path="res://power_up.tscn" id="4_mmiyr"]
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
-[ext_resource type="PackedScene" path="res://left_wall.tscn" id="7_6vnp7"]
-[ext_resource type="PackedScene" path="res://play_button.tscn" id="7_58rae"]
-[ext_resource type="PackedScene" path="res://right_wall.tscn" id="8_qo2o3"]
+[ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
+[ext_resource type="PackedScene" uid="uid://smts1mdsxf2f" path="res://play_button.tscn" id="7_58rae"]
+[ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
 [ext_resource type="PackedScene" path="res://score.tscn" id="11_chyus"]
+[ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
 [ext_resource type="PackedScene" uid="uid://cnl46evkh3f4f" path="res://spike.tscn" id="12_rqod6"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
@@ -48,7 +49,7 @@ position = Vector2(372, 1058)
 wait_time = 5.0
 one_shot = true
 
-[node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
+[node name="Power Up DS" parent="." instance=ExtResource("4_mmiyr")]
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 
@@ -121,7 +122,14 @@ offset_top = 108.0
 offset_right = 423.0
 offset_bottom = 163.0
 
+[node name="Restart Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("12_qkjp8")
+
 [node name="Spike" parent="." instance=ExtResource("12_rqod6")]
+
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Restart Button" to="." method="_on_restart_button_pressed"]

@@ -12,6 +12,7 @@ var multiplier_duration: float = 5.0
 
 @onready var levelnode = get_node("/root/Level")
 @onready var scorenode = get_parent().get_node("Score")
+@onready var trailnode = get_node("Trail2D")
 @onready var multiplier_timer = $Timer  # Reference to the Timer node
 
 func _ready() -> void:
@@ -51,6 +52,7 @@ func _process(delta: float) -> void:
 		self.velocity = velocity
 		move_and_slide() 
 		inc_score()  # Increment score
+		trailnode.add_trail_point(self.position)
 
 func move_toward(current: float, target: float, delta: float) -> float:
 	if current < target:

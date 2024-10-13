@@ -48,7 +48,7 @@ position = Vector2(372, 1058)
 wait_time = 5.0
 one_shot = true
 
-[node name="Power Up" parent="." instance=ExtResource("4_mmiyr")]
+[node name="Power Up DS" parent="." instance=ExtResource("4_mmiyr")]
 
 [node name="Music" parent="." instance=ExtResource("5_j4qqt")]
 

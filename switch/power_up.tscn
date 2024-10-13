@@ -1,20 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy1qe65gcd50k"]
+[gd_scene load_steps=3 format=3 uid="uid://cy1qe65gcd50k"]
 
 [ext_resource type="Script" path="res://scripts/power_up.gd" id="1_annuv"]
-[ext_resource type="Texture2D" uid="uid://cdsixgsnxxws2" path="res://art/Power Up.png" id="2_3giwy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4u22"]
-size = Vector2(91, 114)
+[ext_resource type="Texture2D" uid="uid://clvo03b8rnajy" path="res://art/shield.png" id="2_bjk2x"]
 
 [node name="Power Up" type="Area2D"]
 script = ExtResource("1_annuv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1.5, 3)
-shape = SubResource("RectangleShape2D_k4u22")
+polygon = PackedVector2Array(-41.5, -47, -41.5, 10, -41.5, 10, -1.5, 50, -1.5, 50, 36.5, 13, 37.5, -47, -38.5, -47)
 
 [node name="Score Up" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-texture = ExtResource("2_3giwy")
+scale = Vector2(0.441839, 0.45342)
+texture = ExtResource("2_bjk2x")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

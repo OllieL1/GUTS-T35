@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw00q060smlx5"]
+
+[ext_resource type="Script" path="res://scripts/doublePowerUp.gd" id="1_bohk2"]
+[ext_resource type="Texture2D" uid="uid://d4ghwnvfp0vg1" path="res://art/coin.png" id="2_idgfr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7iaj"]
+radius = 51.6236
+
+[node name="DoublePowerUp" type="Area2D"]
+script = ExtResource("1_bohk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999989, -1.99999)
+scale = Vector2(0.202148, 0.21582)
+texture = ExtResource("2_idgfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_q7iaj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -20,4 +20,4 @@ func update_score() -> void:
 	# Increment score every second based on the Timer's signal
 	# score += 0.1*score_multiplier
 	# if (int(score*10) % 10 == 0):
-		text = "Score: %s" % int(playernode.score)
+	text = "Score: %s" % int(playernode.score)

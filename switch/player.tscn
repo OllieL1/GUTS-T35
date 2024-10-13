@@ -68,4 +68,9 @@ script = ExtResource("3_py81s")
 wait_time = 5.0
 one_shot = true
 
+[node name="WarningTimer" type="Timer" parent="."]
+wait_time = 3.942
+one_shot = true
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_warning_timer_timeout"]

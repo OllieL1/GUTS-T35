@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cc3ne42fyol7d"]
+[gd_scene load_steps=30 format=3 uid="uid://cc3ne42fyol7d"]
 
 [ext_resource type="PackedScene" uid="uid://c72b61knpxsme" path="res://player.tscn" id="1_0s2yp"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mhqcc"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" path="res://high_score.tscn" id="15_7ikkh"]
 [ext_resource type="Script" path="res://scripts/high_score.gd" id="16_p3owe"]
 [ext_resource type="PackedScene" path="res://title.tscn" id="17_vw601"]
+[ext_resource type="PackedScene" path="res://game_over.tscn" id="18_eb6ar"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="19_1nr5r"]
+[ext_resource type="PackedScene" path="res://prompt.tscn" id="20_ye2cm"]
+[ext_resource type="Theme" path="res://themes/title.tres" id="21_j0qtu"]
 
 [sub_resource type="Curve" id="Curve_6pr7g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
@@ -163,15 +167,44 @@ icon = ExtResource("12_qkjp8")
 [node name="DoublePowerUp" parent="." instance=ExtResource("14_uelel")]
 
 [node name="High Score" parent="." instance=ExtResource("15_7ikkh")]
-offset_left = 52.0
-offset_right = 682.0
+top_level = true
+offset_left = 55.0
+offset_top = 434.0
+offset_right = 685.0
+offset_bottom = 755.0
 script = ExtResource("16_p3owe")
 
 [node name="Title" parent="." instance=ExtResource("17_vw601")]
-offset_left = 177.0
-offset_top = 163.0
-offset_right = 589.0
-offset_bottom = 345.0
+offset_left = 166.0
+offset_top = 155.0
+offset_right = 578.0
+offset_bottom = 928.0
+theme_override_colors/default_color = Color(1, 0.647059, 0, 1)
+bbcode_enabled = true
+text = "[center]SWITCH
+"
+fit_content = true
+
+[node name="Game Over" parent="." instance=ExtResource("18_eb6ar")]
+top_level = true
+offset_left = 211.0
+offset_top = 767.0
+offset_right = 524.0
+offset_bottom = 938.0
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+script = ExtResource("19_1nr5r")
+
+[node name="Prompt" parent="." instance=ExtResource("20_ye2cm")]
+top_level = true
+offset_left = 47.0
+offset_top = 660.0
+offset_right = 663.0
+offset_bottom = 968.0
+theme = ExtResource("21_j0qtu")
+bbcode_enabled = true
+text = "[center]Tap to play!"
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false

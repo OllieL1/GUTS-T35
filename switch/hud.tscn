@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://kgn2hgxnkahu"]
+[gd_scene load_steps=10 format=3 uid="uid://kgn2hgxnkahu"]
 
 [ext_resource type="PackedScene" uid="uid://bgjpg6hy66r7p" path="res://play_button.tscn" id="1_ybsnp"]
 [ext_resource type="PackedScene" uid="uid://cgtrfvh4dshx4" path="res://score.tscn" id="2_y6e7t"]
 [ext_resource type="PackedScene" uid="uid://ddcdcvkdl5bte" path="res://title.tscn" id="3_af480"]
 [ext_resource type="PackedScene" uid="uid://bojliu6oq07qo" path="res://high_score.tscn" id="4_7qe85"]
 [ext_resource type="Script" path="res://scripts/high_score.gd" id="5_yq3jn"]
+[ext_resource type="PackedScene" uid="uid://x734jhshx8q8" path="res://game_over.tscn" id="6_7wo2e"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="7_kibby"]
+[ext_resource type="PackedScene" uid="uid://ibupqw4ajrrb" path="res://prompt.tscn" id="8_m26ih"]
 
 [sub_resource type="Theme" id="Theme_ha5m7"]
 default_font_size = 50
@@ -20,6 +23,7 @@ theme = SubResource("Theme_ha5m7")
 layout_mode = 0
 
 [node name="Score" parent="." instance=ExtResource("2_y6e7t")]
+top_level = true
 layout_mode = 0
 offset_left = 306.0
 offset_top = 97.0
@@ -35,6 +39,11 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 412.0
 offset_bottom = 182.0
+bbcode_enabled = true
+text = "[center]SWITCH
+
+Tap to play!
+"
 
 [node name="High Score" parent="." instance=ExtResource("4_7qe85")]
 layout_mode = 0
@@ -43,5 +52,15 @@ offset_top = 0.0
 offset_right = 630.0
 offset_bottom = 321.0
 script = ExtResource("5_yq3jn")
+
+[node name="Game Over" parent="." instance=ExtResource("6_7wo2e")]
+layout_mode = 0
+script = ExtResource("7_kibby")
+
+[node name="Prompt" parent="." instance=ExtResource("8_m26ih")]
+layout_mode = 0
+offset_bottom = 69.0
+text = "Tap to play!"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Score/Timer" to="Score" method="_on_timer_timeout"]

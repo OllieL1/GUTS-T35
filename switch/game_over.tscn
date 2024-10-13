@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://x734jhshx8q8"]
+
+[ext_resource type="Theme" uid="uid://dnv8t4na1mcki" path="res://themes/labelTheme.tres" id="1_fcacl"]
+
+[node name="Game Over" type="Label"]
+offset_right = 40.0
+offset_bottom = 69.0
+theme = ExtResource("1_fcacl")
+text = "Game Over!
+
+Tap to try again!"
+horizontal_alignment = 1

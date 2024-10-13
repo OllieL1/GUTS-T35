@@ -1,29 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://c72b61knpxsme"]
+[gd_scene load_steps=7 format=3 uid="uid://c72b61knpxsme"]
 
-[ext_resource type="Texture2D" uid="uid://7jw75qncxtav" path="res://art/star.png" id="1_ajcwy"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oewdl"]
+[ext_resource type="Texture2D" uid="uid://f4rs1c5mfht2" path="res://art/player-removebg-preview.png" id="2_6ppwh"]
+[ext_resource type="Script" path="res://scripts/trail_2d.gd" id="3_py81s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfegi"]
-size = Vector2(61, 71)
+size = Vector2(80, 77)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dj4qw"]
-polygon = PackedVector2Array(-2, -46, -11, -22, -41, -21, -18, -5, -26, 20, -1, 6, 23, 20, 15, -5, 39, -20, 9, -21)
+polygon = PackedVector2Array(-35, -48, -39, -46, -43, -42, -44, -38, -44, 16, -42, 21, -40, 23, -35, 25, 20, 25, 22, 24, 25, 22, 28, 20, 30, 16, 30, -39, 28, -43, 24, -46, 20, -48)
+
+[sub_resource type="Curve" id="Curve_awahn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(333, 216)
 script = ExtResource("1_oewdl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4, 1)
-scale = Vector2(0.341146, 0.286111)
-texture = ExtResource("1_ajcwy")
+position = Vector2(0, 5.68434e-14)
+scale = Vector2(0.84375, 0.836879)
+texture = ExtResource("2_6ppwh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -11.5)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_pfegi")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(8, 14)
 occluder = SubResource("OccluderPolygon2D_dj4qw")
+
+[node name="Trail2D" type="Line2D" parent="."]
+show_behind_parent = true
+width_curve = SubResource("Curve_awahn")
+default_color = Color(1, 0.647059, 0, 1)
+script = ExtResource("3_py81s")

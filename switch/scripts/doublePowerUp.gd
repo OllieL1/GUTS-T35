@@ -2,7 +2,7 @@ extends Area2D
 
 # Score multiplier for the power-up
 var score_multiplier: float = 10.0
-var speed: int = 125
+var speed: int = 700
 var random_new_spawn: int
 var nextCreated: bool = false
 
@@ -10,7 +10,7 @@ var nextCreated: bool = false
 
 func _ready() -> void:
 	position.x = randi_range(100, 500)  # Random X position within bounds
-	position.y = randi_range(-200, -1800)  # Start just above the top of the screen
+	position.y = randi_range(-1500, -3000)  # Start just above the top of the screen
 	random_new_spawn = randi_range(15, 20)  # Random Y position to trigger the duplication
 	add_to_group("powerup_group")  # Add to a group for easy access if needed
 
@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 # Function to duplicate this power-up and add the new one to the scene
 func duplicate_powerup() -> void:
 	var new_powerup = self.duplicate()  # Duplicate the current power-up
-	new_powerup.position.y = -50  # Reset Y position for the new power-up
 	new_powerup.position.x = randi_range(100, 500)  # Random X position for the new power-up
 	get_parent().add_child(new_powerup)  # Add the new power-up to the scene
 

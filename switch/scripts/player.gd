@@ -87,15 +87,16 @@ func apply_double(powerup: Node) -> void:
 	print("TIMER START")  # Start the timer when a power-up is applied
 
 func play_explosion() -> void:
-	explosion_particles.position = position  # Set position relative to player
-	explosion_particles.emitting = true
-	explosion_particles.show()  # Ensure particles are visible
-	self.visible = false  # Hide the player
-	trailnode.visible = false  # Hide the trail  # Start emitting particles
+	#explosion_particles.position = position  # Set position relative to player
+	#explosion_particles.emitting = true
+	#explosion_particles.show()  # Ensure particles are visible
+	#self.visible = false  # Hide the player
+	#trailnode.visible = false  # Hide the trail  # Start emitting particles
 
-	await get_tree().create_timer(0.2).timeout  # Wait for 2 seconds
-	explosion_particles.emitting = false  # Stop emitting particles
-	explosion_particles.hide()  # Optionally hide particles after use
+	#await get_tree().create_timer(0.2).timeout  # Wait for 2 seconds
+	#explosion_particles.emitting = false  # Stop emitting particles
+	#explosion_particles.hide()  # Optionally hide particles after use
+	pass
   
 func change_texture(new_texture: Texture) -> void:
 	if new_texture:  # Check if the texture is valid

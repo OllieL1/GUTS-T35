@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ibupqw4ajrrb"]
+
+[ext_resource type="Script" path="res://scripts/prompt.gd" id="1_dojag"]
+
+[node name="Prompt" type="RichTextLabel"]
+offset_right = 402.0
+offset_bottom = 137.0
+text = "Tap here to play!
+"
+script = ExtResource("1_dojag")

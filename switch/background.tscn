@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dls6k7r5dkxcp"]
+[gd_scene load_steps=5 format=3 uid="uid://dls6k7r5dkxcp"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_gx55j"]
 [ext_resource type="Texture2D" uid="uid://cj58rae50eh6" path="res://art/particle.png" id="2_np77r"]
+[ext_resource type="Script" path="res://scripts/greyscale.gd" id="3_hwlqr"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dlml"]
 lifetime_randomness = 1.0
@@ -38,3 +39,10 @@ trail_enabled = true
 trail_lifetime = 0.1
 trail_sections = 5
 trail_section_subdivisions = 3
+
+[node name="Greyscale" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+offset_right = 749.0
+offset_bottom = 1356.0
+color = Color(1, 1, 1, 0.984314)
+script = ExtResource("3_hwlqr")

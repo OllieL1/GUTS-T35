@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var playernode = get_node("Player")
 @onready var hsnode = get_node("High Score")
+@onready var gameovernode = get_node("Game Over")
+@onready var greynode = get_node("/root/Level/Background/Greyscale")
 var run = false  # Tracks if the game is running
 var game_over_state = false  # Tracks if the game is over
 var waiting_for_start = true  # Tracks if we're waiting for the player to start the game
@@ -17,6 +19,7 @@ func _ready() -> void:
 # Main loop
 func _process(delta: float) -> void:
 	if run == true:
+		greynode.grey_reset()
 		# Add game logic here when the game is running
 		pass
 
@@ -40,6 +43,7 @@ func game_over() -> void:
 		print(str(highscore))
 		savefile(str(highscore))
 	hsnode.HSdisplay()
+	gameovernode.show_game_over()
 	game_over_state = true  # Set game over state to true
 	$"Restart Button".visible = false  # Optionally show the restart button
 

@@ -1,13 +1,16 @@
 extends Node2D
 
-var speed : int = 250
-var nextCreated : bool = false
-var random_new_spawn : int
+var speed: int = 250
+var nextCreated: bool = false
+var random_new_spawn: int
+var min_spawn_range: int = 100  # Minimum possible spawn range
+var max_spawn_range: int = 600  # Maximum initial spawn range
+var spawn_range_decrease: int = 3 # Amount to decrease the range each time
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Randomly decide whether to go left or right
-	random_new_spawn = randi_range(300, 500)
+	random_new_spawn = randi_range(min_spawn_range, max_spawn_range)
 	if randi() % 2 == 0:  # Randomly pick between 0 and 1
 		position.x = 0  # Going left
 		rotation = 0
@@ -36,6 +39,13 @@ func duplicate_obstacle() -> void:
 	var new_obstacle = self.duplicate()  # Duplicate the current spike
 	new_obstacle.position = Vector2(randi_range(100, 500), -50)  # Spawn it at the top with a random X position
 	get_parent().add_child(new_obstacle)  # Add the new spike to the scene
+	
+	# Decrease the spawn range progressively but ensure it doesn't go below the minimum range
+	if max_spawn_range > min_spawn_range + spawn_range_decrease:
+		max_spawn_range -= spawn_range_decrease
+	
+	# Generate the next random spawn location with the updated range
+	random_new_spawn = randi_range(min_spawn_range, max_spawn_range)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

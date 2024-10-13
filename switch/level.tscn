@@ -39,10 +39,13 @@ fill_to = Vector2(0.426605, 0.0229358)
 script = ExtResource("1_mhqcc")
 
 [node name="Background" parent="." instance=ExtResource("1_pab6f")]
+z_as_relative = false
 
 [node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
 
 [node name="Player" parent="." instance=ExtResource("1_0s2yp")]
+visibility_layer = 2
+z_index = 2
 position = Vector2(372, 1058)
 
 [node name="Timer" type="Timer" parent="Player"]

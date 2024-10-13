@@ -8,16 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://dqfs6manslryo" path="res://music.tscn" id="5_j4qqt"]
 [ext_resource type="Script" path="res://scripts/wall_effects.gd" id="7_5fh0o"]
 [ext_resource type="PackedScene" uid="uid://ct304pftvmk86" path="res://left_wall.tscn" id="7_6vnp7"]
-[ext_resource type="PackedScene" path="res://play_button.tscn" id="7_58rae"]
+[ext_resource type="PackedScene" uid="uid://smts1mdsxf2f" path="res://play_button.tscn" id="7_58rae"]
 [ext_resource type="PackedScene" uid="uid://de083s1b7pfpi" path="res://right_wall.tscn" id="8_qo2o3"]
-[ext_resource type="PackedScene" path="res://score.tscn" id="11_chyus"]
+[ext_resource type="PackedScene" uid="uid://cgtrfvh4dshx4" path="res://score.tscn" id="11_chyus"]
 [ext_resource type="Texture2D" uid="uid://bhlns0yjyjbpw" path="res://art/Game Over.png" id="12_qkjp8"]
 [ext_resource type="PackedScene" path="res://spike.tscn" id="12_rqod6"]
 [ext_resource type="Texture2D" uid="uid://j7pkccdnnvw7" path="res://art/playerPiece.png" id="14_b722t"]
-[ext_resource type="PackedScene" uid="uid://4jjs802aky17" path="res://doublePowerUp.tscn" id="14_uelel"]
-[ext_resource type="PackedScene" path="res://high_score.tscn" id="15_7ikkh"]
+[ext_resource type="PackedScene" uid="uid://dw00q060smlx5" path="res://doublePowerUp.tscn" id="14_uelel"]
+[ext_resource type="PackedScene" uid="uid://bojliu6oq07qo" path="res://high_score.tscn" id="15_7ikkh"]
 [ext_resource type="Script" path="res://scripts/high_score.gd" id="16_p3owe"]
-[ext_resource type="PackedScene" path="res://title.tscn" id="17_vw601"]
+[ext_resource type="PackedScene" uid="uid://ddcdcvkdl5bte" path="res://title.tscn" id="17_vw601"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akbsf"]
+polygon = PackedVector2Array(0, -42, -4, -32, -23, -22, -34, -26, -29, -16, -33, -3, -43, 1, -33, 4, -29, 17, -34, 27, -24, 24, -4, 34, 0, 43, 4, 35, 26, 24, 34, 27, 31, 18, 36, 4, 45, 1, 35, -4, 30, -15, 35, -26, 25, -22, 6, -31)
+
 [ext_resource type="PackedScene" path="res://game_over.tscn" id="18_eb6ar"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="19_1nr5r"]
 [ext_resource type="PackedScene" path="res://prompt.tscn" id="20_ye2cm"]
@@ -28,8 +32,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_or8ax"]
-offsets = PackedFloat32Array(0.0266667, 0.506667, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0.763078, 0.386352, 1, 0.360708, 0.212965, 0.452198, 1)
+offsets = PackedFloat32Array(0, 0.993333)
+colors = PackedColorArray(0.276674, 0.000181164, 0.334158, 1, 0.908521, 0.59613, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_7oxqv"]
 
@@ -37,12 +41,23 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0.763078, 0.386352, 1, 0.360708, 0.2129
 gradient = SubResource("Gradient_7oxqv")
 fill_to = Vector2(0.513761, 0)
 
+[sub_resource type="Gradient" id="Gradient_srta8"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8q5tl"]
+gradient = SubResource("Gradient_srta8")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.481651, 1)
+
 [sub_resource type="Gradient" id="Gradient_as5uo"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lnb6t"]
 gradient = SubResource("Gradient_as5uo")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.426605, 0.0229358)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j815w"]
+polygon = PackedVector2Array(-1, -110, 71, -71, 10, -36, 72, 1, 9, 35, 72, 70, 2, 109)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2bwg"]
 particle_flag_disable_z = true
@@ -72,6 +87,11 @@ script = ExtResource("1_mhqcc")
 z_as_relative = false
 
 [node name="Obstacle" parent="." instance=ExtResource("2_mr6sg")]
+position = Vector2(-200, -1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Obstacle"]
+occluder = SubResource("OccluderPolygon2D_akbsf")
+occluder_light_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("1_0s2yp")]
 visibility_layer = 2
@@ -117,6 +137,15 @@ scale = Vector2(24.918, 34.9531)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_yfm8o")
 
+[node name="RightLightGlow" type="PointLight2D" parent="Wall Effects/Right Wall Effects"]
+visible = false
+position = Vector2(143, 629)
+scale = Vector2(31.7258, 30.0985)
+energy = 0.25
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_8q5tl")
+
 [node name="Left Wall Effects" type="Node2D" parent="Wall Effects"]
 
 [node name="LeftParticles" type="CPUParticles2D" parent="Wall Effects/Left Wall Effects"]
@@ -141,6 +170,14 @@ scale = Vector2(24.918, 33.2188)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_lnb6t")
 
+[node name="LeftLightGlow" type="PointLight2D" parent="Wall Effects/Left Wall Effects"]
+position = Vector2(-89, 618)
+scale = Vector2(31.7258, 30.0985)
+energy = 0.25
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_8q5tl")
+
 [node name="Left Wall" parent="." instance=ExtResource("7_6vnp7")]
 
 [node name="Right Wall#Sprite2D" type="Sprite2D" parent="."]
@@ -163,6 +200,11 @@ offset_bottom = 8.0
 icon = ExtResource("12_qkjp8")
 
 [node name="Spike" parent="." instance=ExtResource("12_rqod6")]
+position = Vector2(612, 168)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Spike"]
+occluder = SubResource("OccluderPolygon2D_j815w")
+occluder_light_mask = 2
 
 [node name="DoublePowerUp" parent="." instance=ExtResource("14_uelel")]
 

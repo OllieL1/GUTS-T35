@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://j7pkccdnnvw7" path="res://art/playerPiece.png" id="14_b722t"]
 [ext_resource type="PackedScene" uid="uid://dw00q060smlx5" path="res://doublePowerUp.tscn" id="14_uelel"]
 [ext_resource type="PackedScene" uid="uid://bojliu6oq07qo" path="res://high_score.tscn" id="15_7ikkh"]
-[ext_resource type="Script" path="res://scripts/high_score.gd" id="16_p3owe"]
 [ext_resource type="PackedScene" uid="uid://ddcdcvkdl5bte" path="res://title.tscn" id="17_vw601"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akbsf"]

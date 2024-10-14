@@ -9,12 +9,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+				
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				toggleWall()
+	if event is InputEventMouseButton and event.pressed:
+		toggleWall()
+
+	elif event is InputEventKey and event.keycode == KEY_SPACE and event.pressed:
+		toggleWall()
 				
 func toggleWall():
 	var rightParticles = $"Right Wall Effects/RightParticles"

@@ -8,7 +8,7 @@ Maybe an addictive game (E.g. Flappy Bird) which is only one button or an arcade
 Maybe a text-based escape room with simple options for the user to pick
 There is no right answer here, we want to see what you come up with.
 
-**Team Members**
+**Team Members**:
 ☎️ Ollie Livingston (https://github.com/OllieL1)
 ⚙️ Adam Tong (https://github.com/AdamTong04)
 📼 Alasdair Findlay (https://github.com/ASFindlay)

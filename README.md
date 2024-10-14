@@ -1,4 +1,4 @@
-### Project: **Switch**
+# Project: **Switch**
 This is our submission for the Do You Have The GUTS Hackathon 2024 hosted by the Glasgow University Tech Society in partnership with their sponsors: JPMorgan, Morgan Stanley, SAS, Verint, GuitarGuitar, Marshall Wace. \
 \
 📌 **Prompt given by JP Morgan:** 
@@ -19,7 +19,7 @@ There is no right answer here, we want to see what you come up with.
 We decided to centre our focus on the "one touch" idea and create an addictive one tap game. We wanted to use gravity and the idea that the user was falling but solidfying this idea was tricky. Instead we opted to make the character directed towards one wall with obstacles falling towards them. The character would have to adjust their direction to dodge them. \
 A big focus was making the design very visually pleasing to make the users experience very enjoyable and the game easy on the eye. 
 
-### App Store Links
+### 🔗 App Store Links
 Coming soon ⌛
 
 ### To-Do List:

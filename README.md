@@ -1,4 +1,25 @@
 ### Project: **Switch**
+**Prompt given by JP Morgan:** 
+This is our submission for the Do you have the GUTS Hackathon 2024. We were given a prompt by JP Morgan to:
+_Make a fun game as simple as possible_
+Our challenge this year is to create the most fun game with the least amount of effort from the user.
+Options but not limited to:
+Maybe an addictive game (E.g. Flappy Bird) which is only one button or an arcade game using directional buttons
+Maybe a text-based escape room with simple options for the user to pick
+There is no right answer here, we want to see what you come up with.
+
+**Team Members**
+- Ollie Livingston
+- Adam Tong
+- Alasdair Findlay
+- Callum Cooper Lee
+
+**Our submission:**
+We decided to centre our focus on the "one touch" idea and create an addictive one tap game. We wanted to use gravity and the idea that the user was falling but solidfying this idea was tricky. Instead we opted to make the character directed towards one wall with obstacles falling towards them. The character would have to adjust their direction to dodge them. 
+A big focus was making the design very visually pleasing to make the users experience very enjoyable and the game easy on the eye. 
+
+### App Store Links
+Coming soon ⌛
 
 ### To-Do List:
 

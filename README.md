@@ -9,10 +9,10 @@ Maybe a text-based escape room with simple options for the user to pick
 There is no right answer here, we want to see what you come up with.
 
 **Team Members**
-- Ollie Livingston
-- Adam Tong
-- Alasdair Findlay
-- Callum Cooper Lee
+- Ollie Livingston (https://github.com/OllieL1)
+- Adam Tong (https://github.com/AdamTong04)
+- Alasdair Findlay (https://github.com/ASFindlay)
+- Callum Cooper Lee (https://github.com/callumcooperlee)
 
 **Our submission:**
 We decided to centre our focus on the "one touch" idea and create an addictive one tap game. We wanted to use gravity and the idea that the user was falling but solidfying this idea was tricky. Instead we opted to make the character directed towards one wall with obstacles falling towards them. The character would have to adjust their direction to dodge them. 
